@@ -1,0 +1,6 @@
+[
+{
+  "directory": "D:\\Dev\\ToyRender",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/EHsc", "/ID:\\Dev\\ToyRender\\build\\.packages\\t\\tbb\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/ID:\\Dev\\ToyRender\\build\\.packages\\v\\vulkan\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/ID:\\Dev\\ToyRender\\build\\.packages\\g\\glfw\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/DNDEBUG", "/Fobuild\\.objs\\ToyRender\\windows\\x64\\release\\src\\main.cpp.obj", "src\\main.cpp"],
+  "file": "src\\main.cpp"
+}]

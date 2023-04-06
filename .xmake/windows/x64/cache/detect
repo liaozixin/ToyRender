@@ -1,0 +1,106 @@
+{
+    find_programver = {
+        ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe"] = false
+    },
+    find_program_fetch_package_xmake = {
+        cmake = [[C:\ProgrammingTools\cmake-3.24.0-x86_64\bin\cmake]]
+    },
+    find_package_windows_x64_fetch_package_system = {
+        glfw_8574311f4b544fa89a3d8c3ee79d1929_release_external = false,
+        tbb_8574311f4b544fa89a3d8c3ee79d1929_release_external = false,
+        vulkan_8574311f4b544fa89a3d8c3ee79d1929_release_external = false
+    },
+    find_package_windows_x64_fetch_package_xmake = {
+        ["xmake::glfw_8574311f4b544fa89a3d8c3ee79d1929_release_latest_external"] = {
+            linkdirs = {
+                [[D:\Dev\ToyRender\build\.packages\g\glfw\latest\8574311f4b544fa89a3d8c3ee79d1929\lib]]
+            },
+            libfiles = {
+                [[D:\Dev\ToyRender\build\.packages\g\glfw\latest\8574311f4b544fa89a3d8c3ee79d1929\lib\glfw3.lib]]
+            },
+            static = true,
+            version = "latest",
+            links = {
+                "glfw3"
+            },
+            sysincludedirs = {
+                [[D:\Dev\ToyRender\build\.packages\g\glfw\latest\8574311f4b544fa89a3d8c3ee79d1929\include]]
+            }
+        },
+        ["xmake::tbb_8574311f4b544fa89a3d8c3ee79d1929_release_latest_external"] = {
+            linkdirs = {
+                [[D:\Dev\ToyRender\build\.packages\t\tbb\latest\8574311f4b544fa89a3d8c3ee79d1929\lib]]
+            },
+            libfiles = {
+                [[D:\Dev\ToyRender\build\.packages\t\tbb\latest\8574311f4b544fa89a3d8c3ee79d1929\lib\tbb.lib]],
+                [[D:\Dev\ToyRender\build\.packages\t\tbb\latest\8574311f4b544fa89a3d8c3ee79d1929\lib\tbb12.lib]],
+                [[D:\Dev\ToyRender\build\.packages\t\tbb\latest\8574311f4b544fa89a3d8c3ee79d1929\lib\tbbmalloc.lib]]
+            },
+            static = true,
+            version = "latest",
+            links = {
+                "tbb",
+                "tbb12",
+                "tbbmalloc"
+            },
+            sysincludedirs = {
+                [[D:\Dev\ToyRender\build\.packages\t\tbb\latest\8574311f4b544fa89a3d8c3ee79d1929\include]]
+            }
+        },
+        ["xmake::vulkan_8574311f4b544fa89a3d8c3ee79d1929_release_latest_external"] = {
+            linkdirs = {
+                [[D:\Dev\ToyRender\build\.packages\v\vulkan\latest\8574311f4b544fa89a3d8c3ee79d1929\lib]]
+            },
+            libfiles = {
+                [[D:\Dev\ToyRender\build\.packages\v\vulkan\latest\8574311f4b544fa89a3d8c3ee79d1929\lib\vulkan-1.lib]]
+            },
+            static = true,
+            version = "latest",
+            links = {
+                "vulkan-1"
+            },
+            sysincludedirs = {
+                [[D:\Dev\ToyRender\build\.packages\v\vulkan\latest\8574311f4b544fa89a3d8c3ee79d1929\include]]
+            }
+        }
+    },
+    find_program_msvc_arch_x64_plat_windows_checktoolld = {
+        ["link.exe"] = [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\bin\HostX64\x64\link.exe]]
+    },
+    find_program_fetch_package_system = {
+        cmake = "cmake"
+    },
+    find_program_msvc_arch_x64_plat_windows_checktoolcc = {
+        ["cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\bin\HostX64\x64\cl.exe]]
+    },
+    find_program = {
+        zig = false,
+        ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\bin\HostX64\x64\cl.exe]],
+        ["7z"] = [[C:\ProgrammingTools\xmake\winenv\bin\7z]],
+        ["pkg-config"] = "pkg-config",
+        pkgconf = "pkgconf",
+        ping = "ping",
+        ["cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\bin\HostX64\x64\cl.exe]],
+        cmake = "cmake",
+        gzip = false,
+        git = "git",
+        ["msbuild.exe"] = [[C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\amd64\msbuild.exe]],
+        unzip = false
+    },
+    find_program_msvc_arch_x64_plat_windows_checktoolcxx = {
+        ["cl.exe"] = [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\bin\HostX64\x64\cl.exe]]
+    },
+    ["detect.sdks.find_vcpkgdir"] = false,
+    find_programver_fetch_package_system = {
+        cmake = "3.24.0-rc1"
+    },
+    find_programver_fetch_package_xmake = {
+        ["C:\\ProgrammingTools\\cmake-3.24.0-x86_64\\bin\\cmake"] = "3.24.0-rc1"
+    },
+    ["lib.detect.has_flags"] = {
+        ["windows_x64_C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe__cxx_cxflags_-nologo_-DNDEBUG"] = true,
+        ["windows_x64_C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe__cxx_cxflags_-nologo_cl_external_includedir"] = true,
+        ["windows_x64_C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe__cxx__-nologo_-O2 -fp:fast"] = true,
+        ["windows_x64_C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe__cxx_cxflags_-nologo_cl_sourceDependencies"] = true
+    }
+}
