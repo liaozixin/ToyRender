@@ -35,7 +35,19 @@ package("glfw")
     end)
 package_end()
 
+package("imgui")
+    add_deps("cmake")
+    set_sourcedir(path.join("$(projectdir)/3rdparty", "imgui"))
+    on_install(function (package)
+        local configs = {}
+        table.insert(configs, "-DCMAKE_BUILD_TYPE=" .. (package:debug() and "Debug" or "Release"))
+        table.insert(configs, "-DBUILD_SHARED_LIBS=" .. (package:config("shared") and "ON" or "OFF"))
+        table.insert(configs,"-DCMAKE_INSTALL_INCLUDEDIR=" .. path.jion(package:installdir(), "include"))
+        table.insert(configs,"-DCMAKE_INSTALL_LIBDIR=" .. path.join(package:installdir(), "lib"))
 
+        import("package.tools.cmake").install(package, configs)
+    end)
+package_end()
 
 add_requires("tbb")
 add_requires("vulkan")
