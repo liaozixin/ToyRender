@@ -1,53 +1,6 @@
 add_rules("mode.debug", "mode.release")
 
-package("tbb")
-    add_deps("cmake")
-    set_sourcedir(path.join("$(projectdir)/3rdparty", "oneTBB"))
-    on_install(function (package)
-        local configs = {}
-        table.insert(configs, "-DCMAKE_BUILD_TYPE=" .. (package:debug() and "Debug" or "Release"))
-        table.insert(configs, "-DBUILD_SHARED_LIBS=" .. (package:config("shared") and "ON" or "OFF"))
-        import("package.tools.cmake").install(package, configs)
-    end)
-package_end()
-
-package("vulkan")
-    add_deps("cmake")
-    set_sourcedir(path.join("$(projectdir)/3rdparty", "vulkan-1.3.243.0"))
-    on_install(function (package)
-        local configs = {}
-        table.insert(configs, "-DCMAKE_BUILD_TYPE=" .. (package:debug() and "Debug" or "Release"))
-        table.insert(configs, "-DBUILD_SHARED_LIBS=" .. (package:config("shared") and "ON" or "OFF"))
-        table.insert(configs,"-DCMAKE_INSTALL_INCLUDEDIR=" .. package:installdir())
-        table.insert(configs,"-DCMAKE_INSTALL_LIBDIR=" .. package:installdir())
-        import("package.tools.cmake").install(package, configs)
-    end)
-package_end()
-
-package("glfw")
-    add_deps("cmake")
-    set_sourcedir(path.join("$(projectdir)/3rdparty", "glfw-3.3.8"))
-    on_install(function (package)
-        local configs = {}
-        table.insert(configs, "-DCMAKE_BUILD_TYPE=" .. (package:debug() and "Debug" or "Release"))
-        table.insert(configs, "-DBUILD_SHARED_LIBS=" .. (package:config("shared") and "ON" or "OFF"))
-        import("package.tools.cmake").install(package, configs)
-    end)
-package_end()
-
-package("imgui")
-    add_deps("cmake")
-    set_sourcedir(path.join("$(projectdir)/3rdparty", "imgui"))
-    on_install(function (package)
-        local configs = {}
-        table.insert(configs, "-DCMAKE_BUILD_TYPE=" .. (package:debug() and "Debug" or "Release"))
-        table.insert(configs, "-DBUILD_SHARED_LIBS=" .. (package:config("shared") and "ON" or "OFF"))
-        table.insert(configs,"-DCMAKE_INSTALL_INCLUDEDIR=" .. path.jion(package:installdir(), "include"))
-        table.insert(configs,"-DCMAKE_INSTALL_LIBDIR=" .. path.join(package:installdir(), "lib"))
-
-        import("package.tools.cmake").install(package, configs)
-    end)
-package_end()
+includes("3rdparty")
 
 add_requires("tbb")
 add_requires("vulkan")
@@ -60,8 +13,9 @@ target("ToyRender")
     add_packages("tbb")
     add_packages("vulkan")
     add_packages("glfw")
-
---
+    add_deps("imgui")
+    add_deps("lualib")
+    add_deps("luabridge")
 -- If you want to known more usage about xmake, please see https://xmake.io
 --
 -- ## FAQ
