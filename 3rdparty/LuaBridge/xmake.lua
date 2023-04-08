@@ -1,0 +1,5 @@
+target("LuaBridge")
+    set_kind("headeronly")
+    add_includedirs("Source/LuaBridge")
+    add_headerfiles("Source/LuaBridge/*.h")
+    add_headerfiles("Source/LuaBridge/detail/*.h")

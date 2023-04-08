@@ -1,28 +1,36 @@
-#include <iostream>
-#include <vector>
-#include <tbb/tbb.h>
-#include <vulkan/vulkan.hpp>
+#define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
-#include <imgui.h>
-#include <backends/imgui_impl_glfw.h>
-#include <backends/imgui_impl_vulkan.h>
-#include <lua.hpp>
-#include <LuaBridge/LuaBridge.h>
+#include <iostream>
 
 using namespace std;
 
 int main(int argc, char** argv)
 {
-    std::vector<int> v{1, 2, 4, 5, 6, 7};
-
-    tbb::parallel_for_each(v.begin(), v.end(),
-            [](int& v){
-                v += 1;
-            });
-
-    for (auto x : v) {
-        std::cout << x << std::endl;
+    if (!glfwInit()) {
+        std::cerr << "Failed to init GLFW" << std::endl;
+        exit(EXIT_FAILURE);
     }
+    GLFWwindow* window = glfwCreateWindow(640, 480, "window", nullptr, nullptr);
+    if (window == nullptr) {
+        std::cerr << "Failed to create GLFW Window!" << std::endl;
+        glfwTerminate();
+        exit(EXIT_FAILURE);
+    }
+    int x, y;
+    glfwGetFramebufferSize(window, &x, &y);
+    std::cout << x << ", " << y << std::endl;
 
-    return 0;
+    GLFWmonitor* primary = glfwGetPrimaryMonitor();
+    const GLFWvidmode* mode = glfwGetVideoMode(primary);
+    std::cout << mode->width << ", " << mode->height << std::endl;
+    glfwSetWindowPos(window, (mode->width - x) / 2, (mode->height - y) / 2);
+
+    glfwSwapInterval(1);
+
+    while (!glfwWindowShouldClose(window)) {
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+    }
+    glfwTerminate();
+    exit(EXIT_SUCCESS);
 }

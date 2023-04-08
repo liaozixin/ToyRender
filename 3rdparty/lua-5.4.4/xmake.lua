@@ -1,0 +1,8 @@
+target("lua")
+    set_kind("static")
+    add_files("src/*.c")
+    remove_files("src/lua.c")
+    remove_files("src/luac.c")
+    add_includedirs("src", {public = true})
+    add_headerfiles("src/*.h")
+    add_headerfiles("src/*.hpp")

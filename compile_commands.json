@@ -1,201 +1,41 @@
 [
 {
   "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\lapi.c.obj", "3rdparty\\lua-5.4.4\\src\\lapi.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\lapi.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\lauxlib.c.obj", "3rdparty\\lua-5.4.4\\src\\lauxlib.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\lauxlib.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\lbaselib.c.obj", "3rdparty\\lua-5.4.4\\src\\lbaselib.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\lbaselib.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\lcode.c.obj", "3rdparty\\lua-5.4.4\\src\\lcode.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\lcode.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\lcorolib.c.obj", "3rdparty\\lua-5.4.4\\src\\lcorolib.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\lcorolib.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\lctype.c.obj", "3rdparty\\lua-5.4.4\\src\\lctype.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\lctype.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\ldblib.c.obj", "3rdparty\\lua-5.4.4\\src\\ldblib.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\ldblib.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\ldebug.c.obj", "3rdparty\\lua-5.4.4\\src\\ldebug.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\ldebug.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\ldo.c.obj", "3rdparty\\lua-5.4.4\\src\\ldo.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\ldo.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\ldump.c.obj", "3rdparty\\lua-5.4.4\\src\\ldump.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\ldump.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\lfunc.c.obj", "3rdparty\\lua-5.4.4\\src\\lfunc.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\lfunc.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\lgc.c.obj", "3rdparty\\lua-5.4.4\\src\\lgc.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\lgc.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\linit.c.obj", "3rdparty\\lua-5.4.4\\src\\linit.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\linit.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\liolib.c.obj", "3rdparty\\lua-5.4.4\\src\\liolib.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\liolib.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\llex.c.obj", "3rdparty\\lua-5.4.4\\src\\llex.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\llex.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\lmathlib.c.obj", "3rdparty\\lua-5.4.4\\src\\lmathlib.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\lmathlib.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\lmem.c.obj", "3rdparty\\lua-5.4.4\\src\\lmem.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\lmem.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\loadlib.c.obj", "3rdparty\\lua-5.4.4\\src\\loadlib.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\loadlib.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\lobject.c.obj", "3rdparty\\lua-5.4.4\\src\\lobject.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\lobject.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\lopcodes.c.obj", "3rdparty\\lua-5.4.4\\src\\lopcodes.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\lopcodes.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\loslib.c.obj", "3rdparty\\lua-5.4.4\\src\\loslib.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\loslib.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\lparser.c.obj", "3rdparty\\lua-5.4.4\\src\\lparser.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\lparser.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\lstate.c.obj", "3rdparty\\lua-5.4.4\\src\\lstate.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\lstate.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\lstring.c.obj", "3rdparty\\lua-5.4.4\\src\\lstring.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\lstring.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\lstrlib.c.obj", "3rdparty\\lua-5.4.4\\src\\lstrlib.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\lstrlib.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\ltable.c.obj", "3rdparty\\lua-5.4.4\\src\\ltable.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\ltable.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\ltablib.c.obj", "3rdparty\\lua-5.4.4\\src\\ltablib.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\ltablib.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\ltm.c.obj", "3rdparty\\lua-5.4.4\\src\\ltm.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\ltm.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\lundump.c.obj", "3rdparty\\lua-5.4.4\\src\\lundump.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\lundump.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\lutf8lib.c.obj", "3rdparty\\lua-5.4.4\\src\\lutf8lib.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\lutf8lib.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\lvm.c.obj", "3rdparty\\lua-5.4.4\\src\\lvm.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\lvm.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\lua-5.4.4\\src", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lualib\\windows\\x64\\release\\3rdparty\\lua-5.4.4\\src\\lzio.c.obj", "3rdparty\\lua-5.4.4\\src\\lzio.c"],
-  "file": "3rdparty\\lua-5.4.4\\src\\lzio.c"
-},
-{
-  "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/std:c++11", "/I3rdparty\\imgui", "/EHsc", "/ID:\\Dev\\ToyRender\\build\\.packages\\g\\glfw\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/ID:\\Dev\\ToyRender\\build\\.packages\\v\\vulkan\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/DNDEBUG", "/Fobuild\\.objs\\imgui\\windows\\x64\\release\\3rdparty\\imgui\\imgui.cpp.obj", "3rdparty\\imgui\\imgui.cpp"],
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/std:c++11", "/ID:\\Dev\\ToyRender\\include", "/I3rdparty\\imgui", "/EHsc", "/ID:\\Dev\\ToyRender\\build\\.packages\\g\\glfw\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/ID:\\Dev\\ToyRender\\build\\.packages\\v\\vulkan\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/DNDEBUG", "/Fobuild\\.objs\\imgui\\windows\\x64\\release\\3rdparty\\imgui\\imgui.cpp.obj", "3rdparty\\imgui\\imgui.cpp"],
   "file": "3rdparty\\imgui\\imgui.cpp"
 },
 {
   "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/std:c++11", "/I3rdparty\\imgui", "/EHsc", "/ID:\\Dev\\ToyRender\\build\\.packages\\g\\glfw\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/ID:\\Dev\\ToyRender\\build\\.packages\\v\\vulkan\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/DNDEBUG", "/Fobuild\\.objs\\imgui\\windows\\x64\\release\\3rdparty\\imgui\\imgui_demo.cpp.obj", "3rdparty\\imgui\\imgui_demo.cpp"],
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/std:c++11", "/ID:\\Dev\\ToyRender\\include", "/I3rdparty\\imgui", "/EHsc", "/ID:\\Dev\\ToyRender\\build\\.packages\\g\\glfw\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/ID:\\Dev\\ToyRender\\build\\.packages\\v\\vulkan\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/DNDEBUG", "/Fobuild\\.objs\\imgui\\windows\\x64\\release\\3rdparty\\imgui\\imgui_demo.cpp.obj", "3rdparty\\imgui\\imgui_demo.cpp"],
   "file": "3rdparty\\imgui\\imgui_demo.cpp"
 },
 {
   "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/std:c++11", "/I3rdparty\\imgui", "/EHsc", "/ID:\\Dev\\ToyRender\\build\\.packages\\g\\glfw\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/ID:\\Dev\\ToyRender\\build\\.packages\\v\\vulkan\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/DNDEBUG", "/Fobuild\\.objs\\imgui\\windows\\x64\\release\\3rdparty\\imgui\\imgui_draw.cpp.obj", "3rdparty\\imgui\\imgui_draw.cpp"],
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/std:c++11", "/ID:\\Dev\\ToyRender\\include", "/I3rdparty\\imgui", "/EHsc", "/ID:\\Dev\\ToyRender\\build\\.packages\\g\\glfw\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/ID:\\Dev\\ToyRender\\build\\.packages\\v\\vulkan\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/DNDEBUG", "/Fobuild\\.objs\\imgui\\windows\\x64\\release\\3rdparty\\imgui\\imgui_draw.cpp.obj", "3rdparty\\imgui\\imgui_draw.cpp"],
   "file": "3rdparty\\imgui\\imgui_draw.cpp"
 },
 {
   "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/std:c++11", "/I3rdparty\\imgui", "/EHsc", "/ID:\\Dev\\ToyRender\\build\\.packages\\g\\glfw\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/ID:\\Dev\\ToyRender\\build\\.packages\\v\\vulkan\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/DNDEBUG", "/Fobuild\\.objs\\imgui\\windows\\x64\\release\\3rdparty\\imgui\\imgui_tables.cpp.obj", "3rdparty\\imgui\\imgui_tables.cpp"],
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/std:c++11", "/ID:\\Dev\\ToyRender\\include", "/I3rdparty\\imgui", "/EHsc", "/ID:\\Dev\\ToyRender\\build\\.packages\\g\\glfw\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/ID:\\Dev\\ToyRender\\build\\.packages\\v\\vulkan\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/DNDEBUG", "/Fobuild\\.objs\\imgui\\windows\\x64\\release\\3rdparty\\imgui\\imgui_tables.cpp.obj", "3rdparty\\imgui\\imgui_tables.cpp"],
   "file": "3rdparty\\imgui\\imgui_tables.cpp"
 },
 {
   "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/std:c++11", "/I3rdparty\\imgui", "/EHsc", "/ID:\\Dev\\ToyRender\\build\\.packages\\g\\glfw\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/ID:\\Dev\\ToyRender\\build\\.packages\\v\\vulkan\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/DNDEBUG", "/Fobuild\\.objs\\imgui\\windows\\x64\\release\\3rdparty\\imgui\\imgui_widgets.cpp.obj", "3rdparty\\imgui\\imgui_widgets.cpp"],
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/std:c++11", "/ID:\\Dev\\ToyRender\\include", "/I3rdparty\\imgui", "/EHsc", "/ID:\\Dev\\ToyRender\\build\\.packages\\g\\glfw\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/ID:\\Dev\\ToyRender\\build\\.packages\\v\\vulkan\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/DNDEBUG", "/Fobuild\\.objs\\imgui\\windows\\x64\\release\\3rdparty\\imgui\\imgui_widgets.cpp.obj", "3rdparty\\imgui\\imgui_widgets.cpp"],
   "file": "3rdparty\\imgui\\imgui_widgets.cpp"
 },
 {
   "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/std:c++11", "/I3rdparty\\imgui", "/EHsc", "/ID:\\Dev\\ToyRender\\build\\.packages\\g\\glfw\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/ID:\\Dev\\ToyRender\\build\\.packages\\v\\vulkan\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/DNDEBUG", "/Fobuild\\.objs\\imgui\\windows\\x64\\release\\3rdparty\\imgui\\backends\\imgui_impl_glfw.cpp.obj", "3rdparty\\imgui\\backends\\imgui_impl_glfw.cpp"],
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/std:c++11", "/ID:\\Dev\\ToyRender\\include", "/I3rdparty\\imgui", "/EHsc", "/ID:\\Dev\\ToyRender\\build\\.packages\\g\\glfw\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/ID:\\Dev\\ToyRender\\build\\.packages\\v\\vulkan\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/DNDEBUG", "/Fobuild\\.objs\\imgui\\windows\\x64\\release\\3rdparty\\imgui\\backends\\imgui_impl_glfw.cpp.obj", "3rdparty\\imgui\\backends\\imgui_impl_glfw.cpp"],
   "file": "3rdparty\\imgui\\backends\\imgui_impl_glfw.cpp"
 },
 {
   "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/std:c++11", "/I3rdparty\\imgui", "/EHsc", "/ID:\\Dev\\ToyRender\\build\\.packages\\g\\glfw\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/ID:\\Dev\\ToyRender\\build\\.packages\\v\\vulkan\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/DNDEBUG", "/Fobuild\\.objs\\imgui\\windows\\x64\\release\\3rdparty\\imgui\\backends\\imgui_impl_vulkan.cpp.obj", "3rdparty\\imgui\\backends\\imgui_impl_vulkan.cpp"],
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/std:c++11", "/ID:\\Dev\\ToyRender\\include", "/I3rdparty\\imgui", "/EHsc", "/ID:\\Dev\\ToyRender\\build\\.packages\\g\\glfw\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/ID:\\Dev\\ToyRender\\build\\.packages\\v\\vulkan\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/DNDEBUG", "/Fobuild\\.objs\\imgui\\windows\\x64\\release\\3rdparty\\imgui\\backends\\imgui_impl_vulkan.cpp.obj", "3rdparty\\imgui\\backends\\imgui_impl_vulkan.cpp"],
   "file": "3rdparty\\imgui\\backends\\imgui_impl_vulkan.cpp"
 },
 {
   "directory": "D:\\Dev\\ToyRender",
-  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\imgui", "/I3rdparty\\lua-5.4.4\\src", "/I3rdparty\\Luabridge\\Source", "/EHsc", "/ID:\\Dev\\ToyRender\\build\\.packages\\t\\tbb\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/ID:\\Dev\\ToyRender\\build\\.packages\\v\\vulkan\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/ID:\\Dev\\ToyRender\\build\\.packages\\g\\glfw\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/DNDEBUG", "/Fobuild\\.objs\\ToyRender\\windows\\x64\\release\\src\\main.cpp.obj", "src\\main.cpp"],
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/fp:fast", "/I3rdparty\\include", "/ID:\\Dev\\ToyRender\\include", "/EHsc", "/ID:\\Dev\\ToyRender\\build\\.packages\\t\\tbb\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/ID:\\Dev\\ToyRender\\build\\.packages\\v\\vulkan\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/ID:\\Dev\\ToyRender\\build\\.packages\\g\\glfw\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/ID:\\Dev\\ToyRender\\build\\.packages\\l\\lua\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/ID:\\Dev\\ToyRender\\build\\.packages\\l\\luabridge\\latest\\8574311f4b544fa89a3d8c3ee79d1929\\include", "/DNDEBUG", "/Fobuild\\.objs\\ToyRender\\windows\\x64\\release\\src\\main.cpp.obj", "src\\main.cpp"],
   "file": "src\\main.cpp"
 }]

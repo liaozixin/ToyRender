@@ -5,6 +5,8 @@ includes("3rdparty")
 add_requires("tbb")
 add_requires("vulkan")
 add_requires("glfw")
+add_requires("lua")
+add_requires("luabridge")
 
 target("ToyRender")
     set_kind("binary")
@@ -13,9 +15,9 @@ target("ToyRender")
     add_packages("tbb")
     add_packages("vulkan")
     add_packages("glfw")
-    add_deps("imgui")
-    add_deps("lualib")
-    add_deps("luabridge")
+    add_packages("lua")
+    add_packages("luabridge")
+    add_deps("3rdparty")
 -- If you want to known more usage about xmake, please see https://xmake.io
 --
 -- ## FAQ
