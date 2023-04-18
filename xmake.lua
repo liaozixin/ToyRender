@@ -7,16 +7,26 @@ add_requires("vulkan")
 add_requires("glfw")
 add_requires("lua")
 add_requires("luabridge")
+add_requires("assimp")
+add_requires("vulkan-hpp")
 
 target("ToyRender")
     set_kind("binary")
     add_files("src/*.cpp")
+    add_files("src/base/*.cpp")
+
+    set_languages("cxx20")
+    if is_mode("debug") then
+
+    end
 
     add_packages("tbb")
     add_packages("vulkan")
+    add_packages("vulkan-hpp")
     add_packages("glfw")
     add_packages("lua")
     add_packages("luabridge")
+    add_packages("assimp")
     add_deps("3rdparty")
 -- If you want to known more usage about xmake, please see https://xmake.io
 --
