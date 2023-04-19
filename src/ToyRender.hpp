@@ -2,17 +2,18 @@
 #ifndef _TOYRENDER_HPP_
 #define _TOYRENDER_HPP_
 
-#include "base/VulkanApp.hpp"
+#include "Polaris.hpp"
 
-class ToyRender : public VulkanApp
+class ToyRender : public polaris::VulkanApp
 {
 public:
     ToyRender():VulkanApp("window", 640, 480){}
     void Init(){
+        polaris::Log::Init();
         try {
             VulkanApp::Init();
         } catch (const std::exception& e) {
-            std::cerr<<e.what()<<std::endl;
+            LOG_ERROR(e.what());
         }
     };
     void DrawScene(){};

@@ -1,23 +1,47 @@
 #include "VulkanApp.hpp"
+#include <algorithm>
+#include <sstream>
+#include <vulkan/vulkan_to_string.hpp>
 
 
-VulkanApp::VulkanApp(std::string windowName, int initWidth, int initHeight)
+#ifdef DEBUG
+    const bool enableValidationLayers = true;
+    PFN_vkCreateDebugUtilsMessengerEXT  pfnVkCreateDebugUtilsMessengerEXT;
+    PFN_vkDestroyDebugUtilsMessengerEXT pfnVkDestroyDebugUtilsMessengerEXT;
+
+    VKAPI_ATTR VkResult VKAPI_CALL vkCreateDebugUtilsMessengerEXT(VkInstance instance,
+                                                                const VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo,
+                                                                const VkAllocationCallbacks* pAllocator,
+                                                                VkDebugUtilsMessengerEXT* pMessager)
+    {
+        return pfnVkCreateDebugUtilsMessengerEXT(instance, pCreateInfo, pAllocator, pMessager);
+    }
+    VKAPI_ATTR void VKAPI_CALL vkDestroyDebugUtilsMessengerEXT(VkInstance instance,
+                                                                VkDebugUtilsMessengerEXT messager,
+                                                                const VkAllocationCallbacks* pAllocator)
+                                                                
+    {
+        return pfnVkDestroyDebugUtilsMessengerEXT(instance, messager, pAllocator);
+    }
+#else
+    const bool enableValidationLayers = false;
+#endif
+
+
+polaris::VulkanApp::VulkanApp(std::string windowName, int initWidth, int initHeight)
     :m_WndCaption(windowName),
     m_ClientWidth(initWidth),
     m_ClientHeight(initHeight)
-{
+{}
 
 
-}
-
-
-VulkanApp:: ~VulkanApp()
+polaris::VulkanApp:: ~VulkanApp()
 {
     FreeRes();
 }
 
 
-void VulkanApp:: Init()
+void polaris::VulkanApp:: Init()
 {
     if (!InitGLFW()) {
         throw std::runtime_error("Failed to init GLFW!");
@@ -27,12 +51,12 @@ void VulkanApp:: Init()
     }
 }
 
-void VulkanApp::OnResize()
+void polaris::VulkanApp::OnResize()
 {
 
 }
 
-bool VulkanApp::InitGLFW(){
+bool polaris::VulkanApp::InitGLFW(){
     if (!glfwInit()) {
         return false;
     }
@@ -44,7 +68,6 @@ bool VulkanApp::InitGLFW(){
                                         glfwDestroyWindow(ptr);
                                     }));
     
-
     if (!m_Window) {
         glfwTerminate();
         return false;
@@ -61,7 +84,7 @@ bool VulkanApp::InitGLFW(){
     return true;
 }
 
-void VulkanApp::Run(){
+void polaris::VulkanApp::Run(){
     while (!glfwWindowShouldClose(m_Window.get())) {
         glfwSwapBuffers(m_Window.get());
         glfwPollEvents();
@@ -71,7 +94,7 @@ void VulkanApp::Run(){
     }
 }
 
-void VulkanApp::CalculateFrameStats(){
+void polaris::VulkanApp::CalculateFrameStats(){
     float currentTime = glfwGetTime();
     float deltaTime = currentTime - m_LastTime;
     m_FrameCount++;
@@ -82,20 +105,26 @@ void VulkanApp::CalculateFrameStats(){
     }
 }
 
-void VulkanApp::FreeRes(){
+void polaris::VulkanApp::FreeRes(){
+#ifdef DEBUG
+    m_Vkinstance.destroyDebugUtilsMessengerEXT(m_debugUtilsMessager);
+#endif
     m_Vkinstance.destroy();
     glfwTerminate();
 }
 
-bool VulkanApp::InitVulkan()
+bool polaris::VulkanApp::InitVulkan()
 {
     if (!CreateInstance()) {
         return false;
-    }    
+    }
+    if (!setupDebugCallback()) {
+        return false;
+    }
     return true;
 }
 
-bool VulkanApp::CreateInstance()
+bool polaris::VulkanApp::CreateInstance()
 {
     try {
         vk::ApplicationInfo appInfo{};
@@ -113,28 +142,124 @@ bool VulkanApp::CreateInstance()
         uint32_t glfwExtensionCount = 0;
         const char** glfwExtensions;
         glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
+        std::vector<const char*> extensions(glfwExtensions, glfwExtensions + glfwExtensionCount);
 
-        createInfo.enabledExtensionCount = glfwExtensionCount;
-        createInfo.ppEnabledExtensionNames = glfwExtensions;
+        if (enableValidationLayers) {
+            extensions.push_back(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
+        }
 
-        createInfo.enabledLayerCount = 0;
-    // m_Vkinstance = vk::createInstance(createInfo);
-    
+        createInfo.enabledExtensionCount = static_cast<uint32_t>(extensions.size());
+        createInfo.ppEnabledExtensionNames = extensions.data();
+
+        
+        if (enableValidationLayers) {
+            const char* validationLayerName = "VK_LAYER_KHRONOS_validation";
+            uint32_t layerCount;
+            vk::enumerateInstanceLayerProperties(&layerCount, nullptr);
+            std::vector<vk::LayerProperties> availableLayers(layerCount);
+            vk::enumerateInstanceLayerProperties(&layerCount, availableLayers.data());
+            
+            bool layerFound = false;
+            auto res = std::find_if(availableLayers.begin(), availableLayers.end(), 
+                        [validationLayerName](vk::LayerProperties another){
+                            if (std::strcmp(validationLayerName, another.layerName) == 0) {
+                                return true;
+                            }
+                            else {
+                                return false;
+                            }
+                        });
+            if (res != availableLayers.end()) {
+                createInfo.ppEnabledLayerNames = &validationLayerName;
+                createInfo.enabledLayerCount = 1;
+            }
+            else {
+                throw std::exception("Validation layer VK_LAYER_KHRONOS_validation not present, validation is disabled");
+            }
+        }
+        else {
+            createInfo.enabledLayerCount = 0;
+        }
+
+        
         m_Vkinstance = vk::createInstance(createInfo);
+    
     } 
     catch (const vk::SystemError& err) {
-        std::cerr << "vk::SystemError: " << err.what() << std::endl;
+        LOG_ERROR(err.what());
         return false;
     }
     catch (const std::exception& err) {
-        std::cerr << "std::exception: " << err.what() << std::endl;
+        LOG_ERROR(err.what());
         return false;
-
     }
     catch (...){
-        std::cerr << "unknown error" << std::endl;
+        LOG_ERROR("unknown error!");
         return false;
     }
 
+    return true;
+}
+
+static VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback(
+            VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
+            VkDebugUtilsMessageTypeFlagsEXT messageType,
+            const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
+            void* pUserData
+        ){
+    std::ostringstream msg;
+    msg << vk::to_string(static_cast<vk::DebugUtilsMessageSeverityFlagBitsEXT>(messageSeverity)) << ": "
+        << vk::to_string(static_cast<vk::DebugUtilsMessageTypeFlagsEXT>(messageType)) << ":\n";
+    msg << std::string("\t") << "messageIDName   = " << pCallbackData->pMessageIdName << "\n";
+    msg << std::string("\t") << "messageIDNumber = " << pCallbackData->messageIdNumber << "\n";
+    msg << std::string("\t") << "message         = " << pCallbackData->pMessage << "\n";
+    
+    throw std::runtime_error(msg.str());
+}
+
+bool polaris::VulkanApp::setupDebugCallback(){
+    if (!enableValidationLayers) {
+        return true;
+    } 
+    try{
+        pfnVkCreateDebugUtilsMessengerEXT = reinterpret_cast<PFN_vkCreateDebugUtilsMessengerEXT>
+                                            (m_Vkinstance.getProcAddr("vkCreateDebugUtilsMessengerEXT"));
+        if (!pfnVkCreateDebugUtilsMessengerEXT) {
+            throw std::exception("GetInstanceProcAddr: Unable to find pfnVkCreateDebugUtilsMessengerEXT function.");
+        }
+        pfnVkDestroyDebugUtilsMessengerEXT = reinterpret_cast<PFN_vkDestroyDebugUtilsMessengerEXT>
+                                            (m_Vkinstance.getProcAddr("vkDestroyDebugUtilsMessengerEXT"));
+        if (!pfnVkDestroyDebugUtilsMessengerEXT) {
+            throw std::exception("GetInstanceProcAddr: Unable to find pfnVkDestroyDebugUtilsMessengerEXT function.");
+        }
+
+        vk::DebugUtilsMessageSeverityFlagsEXT severityFlages(vk::DebugUtilsMessageSeverityFlagBitsEXT::eVerbose |
+                                                            vk::DebugUtilsMessageSeverityFlagBitsEXT::eWarning |
+                                                            vk::DebugUtilsMessageSeverityFlagBitsEXT::eError);
+        vk::DebugUtilsMessageTypeFlagsEXT messageTypeFlags(vk::DebugUtilsMessageTypeFlagBitsEXT::eGeneral |
+                                                            vk::DebugUtilsMessageTypeFlagBitsEXT::eValidation |
+                                                            vk::DebugUtilsMessageTypeFlagBitsEXT::ePerformance);
+        vk::DebugUtilsMessengerCreateInfoEXT createInfo = {};
+        createInfo.sType = vk::StructureType::eDebugUtilsMessengerCreateInfoEXT;
+        createInfo.messageSeverity = severityFlages;
+        createInfo.messageType = messageTypeFlags;
+        createInfo.pfnUserCallback = &debugCallback;
+        createInfo.pUserData = nullptr;
+        m_debugUtilsMessager = m_Vkinstance.createDebugUtilsMessengerEXT(createInfo);
+    }
+    catch (vk::SystemError & err){
+        LOG_ERROR(err.what());        
+        return false;
+    }
+    catch (std::exception & err)
+    {
+        LOG_ERROR(err.what());
+        return false;
+    }
+    catch (...)
+    {
+        LOG_ERROR("unknown error!");
+        return false;
+    }
     return true;
 }

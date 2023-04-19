@@ -9,6 +9,9 @@
 #include <vulkan/vulkan.hpp>
 #include <iostream>
 #include <functional>
+#include "Log.hpp"
+
+namespace polaris {
 
 class VulkanApp
 {
@@ -27,7 +30,11 @@ public:
 
 protected:
     std::unique_ptr<GLFWwindow, std::function<void(GLFWwindow*)>> m_Window{nullptr};
-    vk::Instance m_Vkinstance{nullptr}; 
+    vk::Instance m_Vkinstance;
+
+#ifdef DEBUG
+    vk::DebugUtilsMessengerEXT m_debugUtilsMessager;
+#endif
 
 
     int m_ClientWidth;
@@ -47,8 +54,10 @@ private:
 
 private:
     bool CreateInstance();
+    bool setupDebugCallback();
 };
 
+}
 
 #endif
 

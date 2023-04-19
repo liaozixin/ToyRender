@@ -99,31 +99,44 @@ package_end()
 
 
 add_requires("glfw")
-add_requires("vulkan")
-
+add_requires("vulkan-hpp")
+add_rules("mode.debug", "mode.release")
 target("imgui")
     set_default(false)
     set_kind("static")
     set_languages("cxx11")
 
     before_build(function (target)
-        os.cp("$(scriptdir)/imgui/*.h", "$(scriptdir)/include/")
-        os.cp("$(scriptdir)/imgui/backends/imgui_impl_glfw.h", "$(scriptdir)/include/")
-        os.cp("$(scriptdir)/imgui/backends/imgui_impl_vulkan.h", "$(scriptdir)/include/")
+        if not os.exists("$(scriptdir)/include/imgui") then
+            os.cp("$(scriptdir)/imgui/*.h", "$(scriptdir)/include/imgui/")
+            os.cp("$(scriptdir)/imgui/backends/imgui_impl_glfw.h", "$(scriptdir)/include/imgui/")
+            os.cp("$(scriptdir)/imgui/backends/imgui_impl_vulkan.h", "$(scriptdir)/include/imgui/")
+        end
+        if not os.exists("$(scriptdir)/lib/vulkan-1.lib") then
+            os.cp(path.join(os.getenv("VK_SDK_PATH"), "Lib", "vulkan-1.lib"), "$(scriptdir)/lib/")
+        end
     end)
 
-    add_includedirs("$(scriptdir)/include", {public=true})
     add_includedirs("imgui")
     add_files("imgui/*.cpp")
     add_files("imgui/backends/imgui_impl_glfw.cpp")
     add_files("imgui/backends/imgui_impl_vulkan.cpp")
     add_packages("glfw")
-    add_packages("vulkan")
+    add_packages("vulkan-hpp")
+    add_links("vulkan-1")
+    add_linkdirs("$(scriptdir)/lib")
 
 target("3rdparty")
     set_kind("phony")
     add_deps("imgui")
+    before_build(function (target)
+        if not os.exists("$(scriptdir)/include/glm") then
+            os.cp(path.join(os.getenv("VK_SDK_PATH"), "Include", "glm"), "$(scriptdir)/include/glm/", 
+                    {rootdir = path.join(os.getenv("VK_SDK_PATH"), "Include", "glm")})
+        end
+    end)
     add_includedirs("include", {public=true})
+    add_linkdirs("lib", {public=true})
 
 
 
