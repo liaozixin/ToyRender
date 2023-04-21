@@ -15,8 +15,11 @@
 
 #include <vulkan/vulkan.hpp>
 #include <vulkan/vulkan_to_string.hpp>
+#include <vulkan/vulkan_raii.hpp>
 
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
+
+#include "Log.hpp"
 
 #endif

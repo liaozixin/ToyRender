@@ -1,28 +1,10 @@
 #include "VulkanApp.hpp"
 
 #ifdef DEBUG
-    const bool enableValidationLayers = true;
-    PFN_vkCreateDebugUtilsMessengerEXT  pfnVkCreateDebugUtilsMessengerEXT;
-    PFN_vkDestroyDebugUtilsMessengerEXT pfnVkDestroyDebugUtilsMessengerEXT;
-
-    VKAPI_ATTR VkResult VKAPI_CALL vkCreateDebugUtilsMessengerEXT(VkInstance instance,
-                                                                const VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo,
-                                                                const VkAllocationCallbacks* pAllocator,
-                                                                VkDebugUtilsMessengerEXT* pMessager)
-    {
-        return pfnVkCreateDebugUtilsMessengerEXT(instance, pCreateInfo, pAllocator, pMessager);
-    }
-    VKAPI_ATTR void VKAPI_CALL vkDestroyDebugUtilsMessengerEXT(VkInstance instance,
-                                                                VkDebugUtilsMessengerEXT messager,
-                                                                const VkAllocationCallbacks* pAllocator)
-                                                                
-    {
-        return pfnVkDestroyDebugUtilsMessengerEXT(instance, messager, pAllocator);
-    }
+    bool enableValidationLayers = true;
 #else
-    const bool enableValidationLayers = false;
+    bool enableValidationLayers = false;
 #endif
-
 
 polaris::VulkanApp::VulkanApp(std::string windowName, int initWidth, int initHeight)
     :m_WndCaption(windowName),
@@ -102,11 +84,11 @@ void polaris::VulkanApp::CalculateFrameStats(){
 }
 
 void polaris::VulkanApp::FreeRes(){
-#ifdef DEBUG
-    m_Vkinstance.destroyDebugUtilsMessengerEXT(m_debugUtilsMessager);
-#endif
-    m_Vkinstance.destroy();
     glfwTerminate();
+#ifdef DEBUG
+    m_Debug.destroy(m_Instance);
+#endif
+    m_Instance.destroy();
 }
 
 bool polaris::VulkanApp::InitVulkan()
@@ -115,10 +97,11 @@ bool polaris::VulkanApp::InitVulkan()
         return false;
     }
 #ifdef DEBUG
-    if (!setupDebugCallback()) {
+        m_Debug.create(m_Instance);
+#endif
+    if (!pickPhysicalDevice()) {
         return false;
     }
-#endif
     return true;
 }
 
@@ -178,10 +161,7 @@ bool polaris::VulkanApp::CreateInstance()
         else {
             createInfo.enabledLayerCount = 0;
         }
-
-        
-        m_Vkinstance = vk::createInstance(createInfo);
-    
+        m_Instance = vk::createInstance(createInfo);
     } 
     catch (const vk::SystemError& err) {
         LOG_ERROR(err.what());
@@ -199,67 +179,25 @@ bool polaris::VulkanApp::CreateInstance()
     return true;
 }
 
-static VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback(
-            VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
-            VkDebugUtilsMessageTypeFlagsEXT messageType,
-            const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
-            void* pUserData
-        ){
-    std::ostringstream msg;
-    msg << vk::to_string(static_cast<vk::DebugUtilsMessageSeverityFlagBitsEXT>(messageSeverity)) << ": "
-        << vk::to_string(static_cast<vk::DebugUtilsMessageTypeFlagsEXT>(messageType)) << ":\n";
-    msg << std::string("\t") << "messageIDName   = " << pCallbackData->pMessageIdName << "\n";
-    msg << std::string("\t") << "messageIDNumber = " << pCallbackData->messageIdNumber << "\n";
-    msg << std::string("\t") << "message         = " << pCallbackData->pMessage << "\n";
-    
-    throw std::runtime_error(msg.str());
-}
 
-#ifdef DEBUG
-bool polaris::VulkanApp::setupDebugCallback(){
-    if (!enableValidationLayers) {
-        return true;
-    } 
-    try{
-        pfnVkCreateDebugUtilsMessengerEXT = reinterpret_cast<PFN_vkCreateDebugUtilsMessengerEXT>
-                                            (m_Vkinstance.getProcAddr("vkCreateDebugUtilsMessengerEXT"));
-        if (!pfnVkCreateDebugUtilsMessengerEXT) {
-            throw std::exception("GetInstanceProcAddr: Unable to find pfnVkCreateDebugUtilsMessengerEXT function.");
-        }
-        pfnVkDestroyDebugUtilsMessengerEXT = reinterpret_cast<PFN_vkDestroyDebugUtilsMessengerEXT>
-                                            (m_Vkinstance.getProcAddr("vkDestroyDebugUtilsMessengerEXT"));
-        if (!pfnVkDestroyDebugUtilsMessengerEXT) {
-            throw std::exception("GetInstanceProcAddr: Unable to find pfnVkDestroyDebugUtilsMessengerEXT function.");
-        }
 
-        vk::DebugUtilsMessageSeverityFlagsEXT severityFlages(vk::DebugUtilsMessageSeverityFlagBitsEXT::eVerbose |
-                                                            vk::DebugUtilsMessageSeverityFlagBitsEXT::eWarning |
-                                                            vk::DebugUtilsMessageSeverityFlagBitsEXT::eError);
-        vk::DebugUtilsMessageTypeFlagsEXT messageTypeFlags(vk::DebugUtilsMessageTypeFlagBitsEXT::eGeneral |
-                                                            vk::DebugUtilsMessageTypeFlagBitsEXT::eValidation |
-                                                            vk::DebugUtilsMessageTypeFlagBitsEXT::ePerformance);
-        vk::DebugUtilsMessengerCreateInfoEXT createInfo = {};
-        createInfo.sType = vk::StructureType::eDebugUtilsMessengerCreateInfoEXT;
-        createInfo.messageSeverity = severityFlages;
-        createInfo.messageType = messageTypeFlags;
-        createInfo.pfnUserCallback = &debugCallback;
-        createInfo.pUserData = nullptr;
-        m_debugUtilsMessager = m_Vkinstance.createDebugUtilsMessengerEXT(createInfo);
-    }
-    catch (vk::SystemError & err){
-        LOG_ERROR(err.what());        
+bool polaris::VulkanApp::pickPhysicalDevice(){
+    std::vector<vk::PhysicalDevice> physicalDevices = m_Instance.enumeratePhysicalDevices();
+    if (physicalDevices.size() == 0) {
+        throw std::exception("Failed to find GPUs with Vulkan support!");
         return false;
     }
-    catch (std::exception & err)
-    {
-        LOG_ERROR(err.what());
-        return false;
+
+    for (auto device : physicalDevices) {
+        vk::PhysicalDeviceProperties deviceProperties;
+        vk::PhysicalDeviceFeatures deviceFeatures;
+        deviceProperties = device.getProperties();
+        deviceFeatures = device.getFeatures();
+        if (deviceProperties.deviceType == vk::PhysicalDeviceType::eDiscreteGpu) {
+            m_PhysicalDevice = device;
+        }
+        LOG_INFO("{} {}", vk::to_string(deviceProperties.deviceType), deviceProperties.deviceName);
     }
-    catch (...)
-    {
-        LOG_ERROR("unknown error!");
-        return false;
-    }
+    LOG_INFO("{} {}", "Choose GPU: ", m_PhysicalDevice.getProperties().deviceName);
     return true;
 }
-#endif

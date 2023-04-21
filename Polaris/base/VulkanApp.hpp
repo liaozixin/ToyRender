@@ -2,9 +2,8 @@
 #ifndef _VULKANAPP_HPP_
 #define _VULKANAPP_HPP_
 
-
 #include "pch.hpp"
-#include "Log.hpp"
+#include "VkDebug.hpp"
 
 namespace polaris {
 
@@ -25,19 +24,19 @@ public:
 
 protected:
     std::unique_ptr<GLFWwindow, std::function<void(GLFWwindow*)>> m_Window{nullptr};
-    vk::Instance m_Vkinstance;
+    vk::Instance                                                  m_Instance{nullptr};
+    vk::PhysicalDevice                                            m_PhysicalDevice{nullptr};
 
 #ifdef DEBUG
-    vk::DebugUtilsMessengerEXT m_debugUtilsMessager;
+    VkDebug m_Debug;
 #endif
 
-
-    int m_ClientWidth;
-    int m_ClientHeight;
+    int         m_ClientWidth;
+    int         m_ClientHeight;
     std::string m_WndCaption;
-    float m_LastTime{0};
-    int m_FrameCount{0};
-    int m_fps{0};
+    float       m_LastTime{0};
+    int         m_FrameCount{0};
+    int         m_fps{0};
 
 protected:
     bool InitGLFW();
@@ -49,10 +48,7 @@ private:
 
 private:
     bool CreateInstance();
-
-#ifdef DEBUG
-    bool setupDebugCallback();
-#endif
+    bool pickPhysicalDevice();
 };
 
 }
