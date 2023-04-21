@@ -2,7 +2,7 @@
 #ifndef _TOYRENDER_HPP_
 #define _TOYRENDER_HPP_
 
-#include "Polaris.hpp"
+#include <Polaris.hpp>
 
 class ToyRender : public polaris::VulkanApp
 {

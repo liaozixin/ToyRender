@@ -1,36 +1,13 @@
 add_rules("mode.debug", "mode.release")
 add_rules("plugin.vsxmake.autoupdate")
 
-includes("3rdparty")
+includes("Polaris")
 
-add_requires("tbb")
-add_requires("vulkan")
-add_requires("glfw")
-add_requires("lua")
-add_requires("luabridge")
-add_requires("assimp")
-add_requires("vulkan-hpp")
-add_requires("spdlog")
 target("ToyRender")
     set_kind("binary")
-    add_files("src/*.cpp")
-    add_files("src/base/*.cpp")
-    add_includedirs("src")
-
-    set_languages("cxx20")
-    if is_mode("debug") then
-        add_defines("DEBUG")
-    end
-
-    add_packages("tbb")
-    add_packages("vulkan")
-    add_packages("vulkan-hpp")
-    add_packages("glfw")
-    add_packages("lua")
-    add_packages("luabridge")
-    add_packages("assimp")
-    add_packages("spdlog")
-    add_deps("3rdparty")
+    add_files("src/**.cpp")
+    add_headerfiles("src/**.hpp")
+    add_deps("Polaris")
 -- If you want to known more usage about xmake, please see https://xmake.io
 --
 -- ## FAQ
