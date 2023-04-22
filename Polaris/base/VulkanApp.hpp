@@ -3,7 +3,6 @@
 #define _VULKANAPP_HPP_
 
 #include "pch.hpp"
-#include "VkDebug.hpp"
 
 namespace polaris {
 
@@ -25,11 +24,12 @@ public:
 protected:
     std::unique_ptr<GLFWwindow, std::function<void(GLFWwindow*)>> m_Window{nullptr};
     vk::Instance                                                  m_Instance{nullptr};
+    vk::SurfaceKHR                                                m_Surface{nullptr};
     vk::PhysicalDevice                                            m_PhysicalDevice{nullptr};
+    vk::Device                                                    m_Device{nullptr};
+    vk::Queue                                                     m_GraphicsQueue{nullptr};
+    
 
-#ifdef DEBUG
-    VkDebug m_Debug;
-#endif
 
     int         m_ClientWidth;
     int         m_ClientHeight;
@@ -48,7 +48,10 @@ private:
 
 private:
     bool CreateInstance();
-    bool pickPhysicalDevice();
+    bool CreateSurface();
+    bool PickPhysicalDevice();
+    uint32_t FindQueueFamilies();
+    bool CreateLogicalDevice();
 };
 
 }
