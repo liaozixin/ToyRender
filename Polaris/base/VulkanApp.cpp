@@ -124,6 +124,9 @@ bool polaris::VulkanApp::InitGLFW(){
         return false;
     }
 
+    glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+    glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+
     m_Window = std::move(std::unique_ptr<GLFWwindow, std::function<void(GLFWwindow*)>>(
                     glfwCreateWindow(m_ClientWidth, m_ClientHeight, m_WndCaption.c_str(), nullptr, nullptr), 
                                     [](GLFWwindow* ptr)
@@ -142,9 +145,6 @@ bool polaris::VulkanApp::InitGLFW(){
     GLFWmonitor* primary = glfwGetPrimaryMonitor();
     const GLFWvidmode* mode = glfwGetVideoMode(primary);
     glfwSetWindowPos(m_Window.get(), (mode->width - x) / 2, (mode->height - y) / 2);
-    glfwSwapInterval(1);
-    glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-    glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
     return true;
 }
 
@@ -265,11 +265,8 @@ bool polaris::VulkanApp::CreateInstance()
 
 bool polaris::VulkanApp::CreateSurface(){
     VkSurfaceKHR temSurface;
-    VkInstance temInstance = static_cast<VkInstance>(m_Instance);
-    auto res = glfwCreateWindowSurface(temInstance, m_Window.get(), nullptr, &temSurface);
+    auto res = glfwCreateWindowSurface(m_Instance, m_Window.get(), nullptr, &temSurface);
     if (res != VK_SUCCESS) {
-        std::cout << res << std::endl;
-        std::cout << VK_SUCCESS << std::endl;
         throw std::exception("Failed to create surface!");
         return false;
     }

@@ -7,7 +7,7 @@
 class ToyRender : public polaris::VulkanApp
 {
 public:
-    ToyRender():VulkanApp("window", 640, 480){}
+    ToyRender():VulkanApp("window", 1920, 1080){}
     void Init(){
         polaris::Log::Init();
         try {
