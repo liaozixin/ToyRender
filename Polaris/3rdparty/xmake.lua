@@ -9,6 +9,19 @@ package("tbb")
     end)
 package_end()
 
+package("sdl")
+    add_deps("cmake")
+    set_sourcedir(path.join(os.scriptdir(), "SDL-2.26.5"))
+    if is_plat("windows") then
+        add_syslinks("Winmm","Ole32","CfgMgr32","Setupapi","Version","Imm32","OleAut32")
+    end
+    on_install(function (package)
+        local configs = {}
+        table.insert(configs, "-DCMAKE_BUILD_TYPE=" .. (package:debug() and "Debug" or "Release"))
+        table.insert(configs, "-DBUILD_SHARED_LIBS=" .. (package:config("shared") and "ON" or "OFF"))
+        import("package.tools.cmake").install(package, configs)
+    end)
+package_end()
 
 package("glfw")
     add_deps("cmake")
