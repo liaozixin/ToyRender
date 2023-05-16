@@ -24,6 +24,9 @@ target("Polaris")
     if is_mode("debug") then
         add_defines("DEBUG")
     end
+    if is_mode("release") then
+        add_defines("NDEBUG")
+    end
 
     add_packages("tbb", {public = true})
     add_packages("vulkan-hpp", {public = true})

@@ -127,6 +127,7 @@ target("imgui")
     add_linkdirs("lib")
     add_includedirs("imgui")
 
+
 target("3rdparty")
     set_kind("phony")
     add_deps("imgui")
@@ -136,6 +137,16 @@ target("3rdparty")
                     {rootdir = path.join(os.getenv("VK_SDK_PATH"), "Include", "glm")})
         end
     end)
+    add_includedirs(path.join(os.scriptdir(), "physX", "include"), {public=true})
+    if is_mode("debug") then
+        if is_plat("windows") then
+            add_linkdirs(path.join(os.scriptdir(), "physX", "lib", "win.x86_64.vc143.mt", "debug"), {public=true})
+        end
+        add_links("freeglutd")
+        add_links("PhysXDevice64")
+        add_links("PhysXGpu_64")
+    end
+
     add_includedirs(path.join(os.scriptdir(), "include"), {public=true})
     add_linkdirs(path.join(os.scriptdir(), "lib"), {public=true})
 
