@@ -20,14 +20,28 @@ protected:
     vk::SurfaceKHR     m_Surface{nullptr};
     vk::PhysicalDevice m_PhysicalDevice{nullptr};
     vk::Device         m_Device{nullptr};
+
     vk::Queue          m_GraphicsQueue{nullptr};
+    uint32_t           m_GraphicsQueueIndex;
+    vk::Queue          m_PresentQueue{nullptr};
+    uint32_t           m_PresentQueueIndex;
+    vk::Queue          m_ComputeQueue{nullptr};
+    uint32_t           m_ComputeQueueIndex;
+
+private:
+    enum class QueueType{
+        Graphics,
+        Compute,
+        Present,
+    };
 
 private:
     bool CreateInstance(std::string appName, std::string engineName, SDL_Window* win);
     bool CreateSurface(SDL_Window* win);
     bool PickPhysicalDevice();
-    uint32_t FindQueueFamilies();
+    std::optional<uint32_t> FindQueueFamilies(QueueType type);
     bool CreateLogicalDevice();
+
 };
 
 }

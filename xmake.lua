@@ -5,6 +5,7 @@ includes("Polaris")
 
 target("ToyRender")
     set_kind("binary")
+    set_languages("cxx20")
     add_files("src/**.cpp")
     add_headerfiles("src/**.hpp")
     add_deps("Polaris")

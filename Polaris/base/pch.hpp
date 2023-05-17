@@ -10,9 +10,8 @@
 #include <algorithm>
 #include <sstream>
 #include <tuple>
-
-#define GLFW_INCLUDE_VULKAN
-#include <GLFW/glfw3.h>
+#include <optional>
+#include <set>
 
 #include <vulkan/vulkan.hpp>
 #include <vulkan/vulkan_to_string.hpp>

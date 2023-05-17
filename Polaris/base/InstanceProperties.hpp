@@ -26,6 +26,12 @@ public:
             LOG_INFO("{}", e);
         }
     } 
+    std::vector<const char*> GetEnableLayers() {
+        return m_LayersName;
+    }
+    std::vector<const char*> GetEnableExtensions(){
+        return m_ExtensionsName;
+    }
 private:
     std::vector<const char*> m_LayersName;
     std::vector<const char*> m_ExtensionsName;

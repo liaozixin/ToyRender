@@ -248,33 +248,107 @@ bool polaris::Device::PickPhysicalDevice(){
 }
 
 
-uint32_t polaris::Device::FindQueueFamilies(){
+std::optional<uint32_t> polaris::Device::FindQueueFamilies(QueueType type){
     std::vector<vk::QueueFamilyProperties> queueFamilyProperties = m_PhysicalDevice.getQueueFamilyProperties();
-    auto propertyIterator = std::find_if(queueFamilyProperties.begin(),
-                                        queueFamilyProperties.end(),
-                                        [](const vk::QueueFamilyProperties&  qfp){
-                                            return qfp.queueFlags & vk::QueueFlagBits::eGraphics;
-                                        }); 
-    size_t graphicsQueueFamilyIndex = std::distance(queueFamilyProperties.begin(), propertyIterator);
-    assert(graphicsQueueFamilyIndex < queueFamilyProperties.size());
-    return static_cast<uint32_t>(graphicsQueueFamilyIndex);
+
+    if (type == QueueType::Graphics) {
+        auto propertyIterator = std::find_if(queueFamilyProperties.begin(),
+                                            queueFamilyProperties.end(),
+                                            [](const vk::QueueFamilyProperties&  qfp){
+                                                return qfp.queueFlags & vk::QueueFlagBits::eGraphics;
+                                            }); 
+        size_t requestQueueFamilyIndex = std::distance(queueFamilyProperties.begin(), propertyIterator);
+        assert(requestQueueFamilyIndex < queueFamilyProperties.size());
+        return static_cast<uint32_t>(requestQueueFamilyIndex);
+    }
+    if (type == QueueType::Present) {
+        uint32_t requestQueueFamilyIndex = 0;
+        auto propertyIterator = std::find_if(queueFamilyProperties.begin(),
+                                            queueFamilyProperties.end(),
+                                            [&requestQueueFamilyIndex, this](const vk::QueueFamilyProperties& qfp){
+                                                if (m_PhysicalDevice.getSurfaceSupportKHR(requestQueueFamilyIndex, m_Surface)) {
+                                                    ++requestQueueFamilyIndex;
+                                                    return true;
+                                                }
+                                                else {
+                                                    ++requestQueueFamilyIndex;
+                                                    return false;
+                                                }
+                                            });
+        return requestQueueFamilyIndex;
+    }
+    if (type == QueueType::Compute) {
+        auto propertyIterator = std::find_if(queueFamilyProperties.begin(),
+                                            queueFamilyProperties.end(),
+                                            [](const vk::QueueFamilyProperties&  qfp){
+                                                return qfp.queueFlags & vk::QueueFlagBits::eCompute;
+                                            }); 
+        size_t requestQueueFamilyIndex = std::distance(queueFamilyProperties.begin(), propertyIterator);
+        assert(requestQueueFamilyIndex < queueFamilyProperties.size());
+        return static_cast<uint32_t>(requestQueueFamilyIndex);
+    }
+    return std::nullopt;
 }
 
 
 bool polaris::Device::CreateLogicalDevice(){
     try {
-        uint32_t queueFamilyIndices = FindQueueFamilies();
-        vk::DeviceQueueCreateInfo queueCreateInfo = {};
-        queueCreateInfo.sType = vk::StructureType::eDeviceQueueCreateInfo;
-        queueCreateInfo.setQueueFamilyIndex(queueFamilyIndices);
-        queueCreateInfo.setQueueCount(1);
+        auto res = FindQueueFamilies(QueueType::Graphics);
+        if (!res.has_value()) {
+            throw std::exception("Can't find Graphics Queue!");
+        }
+        m_GraphicsQueueIndex = res.value();
+
+        res = FindQueueFamilies(QueueType::Present);
+        if (!res.has_value()) {
+            throw std::exception("Can't find Present Queue!");
+        }
+        m_PresentQueueIndex = res.value();
+
+        res = FindQueueFamilies(QueueType::Compute);
+        if (!res.has_value()) {
+            throw std::exception("Can't find Compute Queue!");
+        }
+        m_ComputeQueueIndex = res.value();
+        
+
         float queuePriority = 1.0f;
-        queueCreateInfo.setPQueuePriorities(&queuePriority);
 
-        m_Device = m_PhysicalDevice.createDevice(vk::DeviceCreateInfo(vk::DeviceCreateFlags(), queueCreateInfo));
-        m_GraphicsQueue = m_Device.getQueue(queueFamilyIndices, 0);
+        std::set<uint32_t> queueIndices{m_GraphicsQueueIndex, m_PresentQueueIndex, m_ComputeQueueIndex};
 
-        if (! (m_Device && m_GraphicsQueue)) {throw std::exception("Create Logical Device Failed!");}
+
+        std::vector<vk::DeviceQueueCreateInfo> queueCreateInfos;
+        for (auto index : queueIndices) {
+            vk::DeviceQueueCreateInfo queueCreateInfo = {};
+            queueCreateInfo.sType = vk::StructureType::eDeviceQueueCreateInfo;
+            queueCreateInfo.setQueueFamilyIndex(index);
+            queueCreateInfo.setQueueCount(1);
+            queueCreateInfo.setPQueuePriorities(&queuePriority);
+            queueCreateInfos.push_back(queueCreateInfo);
+        }
+         
+        vk::DeviceCreateInfo createInfo = {};
+        vk::PhysicalDeviceFeatures deviceFeatures = {};
+        
+        createInfo.sType = vk::StructureType::eDeviceCreateInfo;
+        createInfo.queueCreateInfoCount = static_cast<uint32_t>(queueCreateInfos.size());
+        createInfo.pQueueCreateInfos = queueCreateInfos.data();
+        createInfo.pEnabledFeatures = &deviceFeatures;
+        createInfo.enabledExtensionCount = 0;
+
+        if (enableValidationLayers) {
+            createInfo.enabledLayerCount = static_cast<uint32_t>(m_InstanceProperties.GetEnableLayers().size());
+            createInfo.ppEnabledLayerNames = m_InstanceProperties.GetEnableLayers().data();
+        }
+        else {
+            createInfo.enabledLayerCount = 0;
+        }
+
+        m_Device = m_PhysicalDevice.createDevice(createInfo);
+        m_GraphicsQueue = m_Device.getQueue(m_GraphicsQueueIndex, 0);
+        m_ComputeQueue = m_Device.getQueue(m_ComputeQueueIndex, 0);
+
+        if (! (m_Device && m_GraphicsQueue && m_ComputeQueue)) {throw std::exception("Create Logical Device Failed!");}
     }
     catch (vk::SystemError& err) {
          LOG_ERROR(err.what());
